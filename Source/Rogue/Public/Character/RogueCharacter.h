@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "RogueCharacter.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS()
 class ROGUE_API ARogueCharacter : public ACharacter
 {
@@ -16,9 +19,14 @@ public:
 	ARogueCharacter();
 
 protected:
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArmComp;
+
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* CameraComp;
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+	void MoveForward(float Value);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
